@@ -17,6 +17,7 @@
       array("9gag", "http://www.9gag.com", 'ffffff'),
       array("sharepoint", "http://student.idcollege.nl/", '0072c6'),
       array("idc", "http://files.aomd.nl/", 'ffffff'),
+      array("untis", "https://tritone.webuntis.com/WebUntis/?school=ID-Zoetermeer#Timetable?type=1&filter.departmentId=-1&formatId=1&id=3688", "ffffff"),
       array("dropbox", "http://www.dropbox.com", "007be1"),
       array("c9", "http://c9.io", "ffffff"),
       array("digitalocean", "https://www.digitalocean.com/", "2e85bb"),
