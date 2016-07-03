@@ -22,7 +22,8 @@
       array("c9", "http://c9.io", "ffffff"),
       array("digitalocean", "https://www.digitalocean.com/", "2e85bb"),
       array("github", "http://www.github.com", "ffffff"),
-      array("macfag", "http://tedvanriel.nl/Projects/macfag/", "E52A2A")
+      array("macfag", "http://tedvanriel.nl/Projects/macfag/", "E52A2A"),
+	  array("whatsapp", "http://web.whatsapp.com", "00A85A")
     );
     foreach($lijst as $val){
       echo("<button onclick='goUrl(\" " . $val[1] . "\");' style='background-color: #" . $val[2] . ";'><center><div id='image-container' style='background-image:url(img/" . $val[0] . ".png);'></div></center></button>");
