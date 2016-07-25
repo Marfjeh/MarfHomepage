@@ -1,7 +1,6 @@
 body{
   margin: 0,0,0,0;
-  /*background: #efefef;*/
-  background: #282828;
+  background: #efefef;
   text-align: center;
 }
 button{
@@ -14,11 +13,11 @@ button{
   transition: all 1s;
 }
 button:hover{
-/*box-shadow: inset 0px 0px 10px 0px #ABABAB,5px 5px 5px 1px #DDDDDD;*/
+box-shadow: inset 0px 0px 10px 0px #ABABAB,5px 5px 5px 1px #DDDDDD;
 
 }
 button:active{
-box-shadow: inset 0px 0px 10px 0px #000000;
+box-shadow: inset 0px 0px 10px 0px #000000,5px 5px 5px 1px #DDDDDD;
 
 }
 #image-container{
