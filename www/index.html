@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <div id="button-container"></div>
+
+  <div id="json-editor">
+    <h3>Edit JSON List</h3>
+    <textarea id="json-input" style="display: none;"></textarea><br>
+    <button onclick="saveJson()">💾 Save</button>
+    <button onclick="exportJson()">📤 Export</button>
+    <input type="file" accept=".json" onchange="importJson(event)">
+    <p style="color: red;" id="error-msg"></p>
+  </div>
+
+  <p id="disclaimer">Disclaimer: all the logos are trademarked and/or copyrighted by the respected owners.</p>
+
+  <script>
+    function goUrl(url) {
+      window.location.href = url.trim();
+    }
+
+    function renderButtons(lijst) {
+      const container = document.getElementById("button-container");
+      container.innerHTML = '';
+
+      lijst.forEach(([name, url, color]) => {
+        const button = document.createElement("button");
+        button.className = "linkbutton";
+        button.style.backgroundColor = `#${color}`;
+        button.onclick = () => goUrl(url);
+
+        const div = document.createElement("div");
+        div.className = "image-container";
+        div.style.backgroundImage = `url(img/${name}.png)`;
+
+        button.appendChild(div);
+        container.appendChild(button);
+      });
+    }
+
+    function saveJson() {
+      const input = document.getElementById("json-input").value;
+      const errorMsg = document.getElementById("error-msg");
+      try {
+        const parsed = JSON.parse(input);
+        localStorage.setItem("customLijst", JSON.stringify(parsed));
+        renderButtons(parsed);
+        errorMsg.textContent = "Saved and updated successfully!";
+        errorMsg.style.color = "green";
+      } catch (e) {
+        errorMsg.textContent = "Invalid JSON: " + e.message;
+        errorMsg.style.color = "red";
+      }
+    }
+
+    function exportJson() {
+      const json = localStorage.getItem("customLijst");
+      const blob = new Blob([json], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "button-list.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJson(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          localStorage.setItem("customLijst", JSON.stringify(data));
+          document.getElementById("json-input").value = JSON.stringify(data, null, 2);
+          renderButtons(data);
+        } catch (err) {
+          alert("Failed to import JSON: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    window.onload = function () {
+      const defaultLijst = [
+        ["youtube", "http://www.youtube.com", "e52d27"],
+        ["9gag", "http://www.9gag.com", "ffffff"],
+        ["sharepoint", "http://student.idcollege.nl/", "0072c6"],
+        ["idc", "http://files.aomd.nl/", "ffffff"],
+        ["untis", "https://tritone.webuntis.com/WebUntis/?school=ID-Zoetermeer#Timetable?type=1&filter.departmentId=-1&formatId=1&id=3688", "ffffff"],
+        ["dropbox", "http://www.dropbox.com", "007be1"],
+        ["c9", "http://c9.io", "ffffff"],
+        ["digitalocean", "https://www.digitalocean.com/", "2e85bb"],
+        ["github", "http://www.github.com", "ffffff"],
+        ["macfag", "http://tedvanriel.nl/Projects/macfag/", "E52A2A"],
+        ["whatsapp", "http://web.whatsapp.com", "00A85A"]
+      ];
+
+      const stored = localStorage.getItem("customLijst");
+      const lijst = stored ? JSON.parse(stored) : defaultLijst;
+
+      renderButtons(lijst);
+      document.getElementById("json-input").value = JSON.stringify(lijst, null, 2);
+    };
+  </script>
+</body>
+</html>

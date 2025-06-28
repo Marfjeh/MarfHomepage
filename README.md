@@ -1,8 +1,7 @@
 # MarfHomepage
-A better homepage for touch-enabled devices.
 
-This is made for my self because typing with a windows tablet is a pain.
+My simple homepage.
 
-The 2017 version includes using Laravel for adding websites to a database and show it in the page.
-
-the old version is still here, only in the ```old``` folder
+Orignally This is made for myself because typing with a windows tablet is a pain, but i dont have this tablet anymore
+but i wanted to have it simple as possible, very lightweight so it will load in very quickly.
+I modified it so it's a bit more modern, and it will store the array in local storage.

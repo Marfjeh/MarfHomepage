@@ -1,0 +1,58 @@
+body {
+  margin: 0, 0, 0, 0;
+  background: #282828;
+  text-align: center;
+  color: #d3d2d2;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.linkbutton {
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  height: 250px;
+  width: 250px;
+  transition: all 0.5s;
+  font-size: 25px;
+}
+
+.linkbutton .image-container {
+  width: 128px;
+  height: 128px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.linkbutton:hover {
+  box-shadow: inset 0px 0px 10px 0px #000000;
+
+}
+
+#image-container {
+  height: 128px;
+  width: 128px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#disclaimer {
+  font-size: 10px;
+  color: #828282;
+  font-family: sans-serif;
+}
+
+    textarea {
+      width: 100px;
+      height: 100px;
+    }
+
+    #json-editor {
+      margin-top: 20px;
+    }
